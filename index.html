@@ -2,19 +2,87 @@
 <html lang="en">
  
 <head>
-  <meta charset="utf-8">
-  <title>&#9729;&#65039; Yuqing Han Web Server</title>
-<!--   <link rel="stylesheet" href="./styles.css"> -->
+	<meta charset="utf-8">
+	<title>&#9729;&#65039; | YUQING HAN</title>
+	<link rel="stylesheet" href="./main.css">
+	<link rel="stylesheet" href='https://fonts.googleapis.com/css?family=Orbitron'>
 </head>
- <body>
- 	<!-- Header -->
- 	<header>
- 		<h1>WELCOME TO YUQING HAN'S WEB SERVER</h1>
- 	</header>
 
- <!-- footer -->
-  <footer>&#169; Yuing Han</footer>
- 
-<!-- <script src="./script.js"></script> -->
+<body>
+	<div id="app">
+<!--  	<label for="menu_icon" class="menu">
+ 		<i class="icon"></i>
+		<i class="icon"></i>
+		<i class="icon"></i>
+	</label>
+	<input type="checkbox" id="menu_icon" class="menu-control" onclick="displaySideBar()">
+	
+	<aside id="side_bar" class="sidebar">
+	
+		<nav id="side_bar_nav" class="sidebar__menu">
+			<a href="">My story</a>
+			<a href="">111</a>
+			<a href="">222</a>
+			<a href="">333</a>
+			<a href="">Contact me</a>
+		</nav>
+
+		<label for="menu-control" class="sidebar__close"></label>
+	</aside> -->
+
+	<!-- svg components -->
+	<div class="hide">
+		<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+			<symbol v-for="svg in svgData" :view-box.camel="svg.viewBox" :id="svg.id">
+				<path v-for="path in svg.paths" :d="path"/>
+			</symbol>
+		</svg>
+	</div>
+
+	<!-- page menu -->
+	<div class="menu">
+		<ul class="nav">
+			<li v-for="svg in svgData">
+				<a href="#">
+					<svg>
+						<use xmlns:xlink="http://www.w3.org/1999/xlink" :xlink:href="svg.ref"></use>
+					</svg>{{svg.value}}
+				</a>
+			</li>
+		</ul>
+	</div>
+
+ 	<!-- intro container -->
+ 	<div class="introContainer">
+ 		<div class="flip-box">
+	 		<div class="flip-box-inner">
+			 	<div class="flip-box-front">
+			 		<img :src="intro.imgSrc" alt="storyPic"/>
+			 	</div>
+			 	<div class="flip-box-back">
+			 		<h2>
+			 			<a v-for="text in intro.texts">{{text}}<br></a>
+			 		</h2>
+				</div>
+			</div>
+	 	</div>
+ 		<h1>My Story ...</h1>
+ 	</div>
+
+ 	<!-- digital clock floating at right -->
+ 	<div class="rightContainer">
+ 		<div id="digitalClock" class="clock"></div>
+ 	</div>
+
+	</div>
+	<footer>&#169; Yuing Han</footer>
+	 
+ 	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+	<script src="./app.js">
+		import APP from '.app.js';
+	</script>
+	<script>
+		new Vue(APP);
+	</script>
 </body>
 </html>
