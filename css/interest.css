@@ -1,5 +1,127 @@
+/* Style table */
+table {
+  border-collapse: collapse;
+  table-layout: fixed;
+  background-color: #fcfaf7;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 50px;
+}
+
+th {
+  text-align: center;
+  padding: 15px;
+  word-wrap: break-word;
+  border: 1px solid #9966cb;
+  border-bottom: 2px solid #9966cb;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+td {
+  text-align: center;
+  font-size: 20px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 12px;
+  padding-right: 12px;
+  word-wrap: break-word;
+  border: 1px solid #9966cb;
+  border-bottom: 2px solid #9966cb;
+}
+
+td img {
+	width: 10px;
+	height: 10px;
+}
+
+.lolCard {
+	overflow: hidden;
+	max-height: 0;
+	transition: max-height 0.2s ease-out;
+}
+
 .contrast {
 	background-color: #9966cb;
+	width: 80%;
+	margin-left: 10%;
+}
+
+.header {
+	padding: 200px 30px 80px 30px;
+	background-image: url('../imgs/interest.jpg');
+	background-size: contain;
+}
+
+.headerTitle {
+	font-size: 90px;
+	text-align: left;
+	color: #fcfaf7;
+	text-shadow: 5px 5px #9966cb;
+}
+
+.interestSection {
+	padding: 100px 0px 300px 0px;
+	background-color: #fcfaf7;
+}
+
+.interestSection_title {
+	font-size: 70px;
+	text-align: left;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	float: left;
+	padding-bottom: 100px;
+	background-color: inherit;
+	width: 100%;
+	padding-left: 0px;
+} 
+
+.interestSection img {
+	width: 100px;
+	height: 100px;
+	padding-left: 40px;
+}
+
+.interestSection_title a:visited,
+.interestSection_title a:active,
+.interestSection_title a:link {
+	color: #9966cb;
+	text-decoration: none;
+}
+
+.interestSection_title a:hover {
+	color: #6e8fc5;
+}
+
+.collapsibleBtn {
+	cursor: pointer;
+	width: 100%;
+	color: #fcfaf7;
+	background-color: #9966cb;
+	border: none;
+	text-align: left;
+	outline: none;
+	padding: 40px;
+	font-size: 40px;
+}
+
+.collapsibleBtn:after {
+	content: '\002B';
+	color: #fcfaf7;
+	font-weight: bold;
+	float: right;
+	margin-left: 5px;
+}
+
+.active:after {
+  content: "\2212";
+}
+
+.collapsibleBtn:hover {
+  background-color: #6e8fc5;
 }
 
 .menu {

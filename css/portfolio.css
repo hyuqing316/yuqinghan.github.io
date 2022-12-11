@@ -198,6 +198,9 @@
 	color: #ffd801;
 }
 
-.hrefLink:hover {
+.hrefLink:hover,
+.hrefLink:link,
+.hrefLink:active {
 	color: #17D4FE;
+	text-decoration: none;
 }

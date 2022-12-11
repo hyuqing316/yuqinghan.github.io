@@ -120,15 +120,15 @@ footer {
 
 .endSection a:visited,
 .endSection a:link,
-.endSection a:active,
-.endSection a:hover {
+.endSection a:active {
 	text-decoration: none;
 	color: #fcfaf7;
 }
-
-.endSection a:visited {
-	color: #fcfaf7;
+.endSection a:hover {
+	text-decoration: none;
+	color: black;
 }
+
 
 .endSection_title {
 	font-size: 30px;

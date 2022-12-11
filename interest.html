@@ -38,8 +38,40 @@
 				</ul>
 			</div>
 
-			<div>
-				<button v-on:click="fetchChampionsJosn">click</button>
+			<div class="header">
+				<p class="headerTitle">
+					{{interest.header}}
+					<br>
+				</p>
+			</div>
+
+			<div id="lol" class="interestSection">
+				<div class="interestSection_title">
+					<a :href="interest.lol.href">{{interest.lol.title}}</a>
+					<img :src="interest.lol.imgSrc" alt="lol"/>
+				</div>
+
+				<div class="contrast">
+					<p>
+						
+					</p>
+
+					<button id="lolBtn" class="collapsibleBtn">{{interest.lol.btnName}}</button>
+					<div class="lolCard">
+						<table id="lol_champions">
+							<tr>
+								<th v-for="attribute in interest.lol.tableAttributes">{{attribute}}</th>
+							</tr>
+							<tr v-for="item in interest.lol.json" :key="item.id">
+								<td><img :src="item.image" :alt="item.id"/></td>
+								<td>{{item.name}}</td>
+								<td>{{item.title}}</td>
+								<td>{{item.tags}}</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				
 			</div>
 
 			<!-- transition section -->

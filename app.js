@@ -266,94 +266,153 @@ var APP = {
 			}
 		},
 		interest: {
+			header: 'MY INTERETS!',
+			lol: {
+				title: '01. LEAGUE OF LEGENDS',
+				href: 'https://www.leagueoflegends.com/en-us/',
+				imgSrc: './imgs/lol.png',
+				tableAttributes: [
+					'Icon',
+					'Name',
+					'Title',
+					'Tags'
+				],
+				json: {}, // placeholder that will be populated
+				btnName: 'Runbook of All LOL Champions'
+			},
 			nextSection: {
 				name: 'Contact',
 				href: './contact.html'
 			}
 		}
 	},
-	created: function showTime() {
-		// map for converting month from digits to letters
-		var monthMap = new Map();
-		monthMap.set(1, 'Jan');
-		monthMap.set(2, 'Feb');
-		monthMap.set(3, 'Mar');
-		monthMap.set(4, 'Apr');
-		monthMap.set(5, 'May');
-		monthMap.set(6, 'Jun');
-		monthMap.set(7, 'Jul');
-		monthMap.set(8, 'Aug');
-		monthMap.set(9, 'Sep');
-		monthMap.set(10, 'Oct');
-		monthMap.set(11, 'Nov');
-		monthMap.set(12, 'Dec');
-
-		// get current time
-		var date = new Date();
-		var month = date.getMonth() + 1; // 1 - 12
-		var day = date.getDate(); // 1 - 31
-		var h = date.getHours(); // 0 - 23
-		var m = date.getMinutes(); // 0 - 59
-		var s = date.getSeconds(); // 0 - 59
-		var session = "AM";
-		
-		// use AM/PM 
-		if (h == 0) {
-		    h = 12;
-		} else if (h > 12) {
-		    h = h - 12;
-		    session = "PM";
-		}
-		
-		// format the numbers
-		h = (h < 10) ? "0" + h : h;
-		m = (m < 10) ? "0" + m : m;
-		s = (s < 10) ? "0" + s : s;
-		
-		// display the time dynamically
-		var time = `${monthMap.get(month)} ${day}\r\n${h}:${m}:${s}\r\n${session}`;
-		document.getElementById("digitalClock").innerText = time;
-		document.getElementById("digitalClock").textContent = time;
-		
-		// make clock count time
-		setTimeout(showTime, 1000);
+	created: async function () {
+		this.showTime();
+		await this.fetchChampionsJson();
+		this.expandTable();
 	},
 	methods: {
-		fetchChampionsJosn: async function() {
-			var filePath = './utils/champions.json';
-			var payload = {
-				headers: {
-					"Accept": "application/json",
-					"Content-Type": "application/json",
-				},
-				method: "GET"
-			}
-			
-			// try making fetch call to get the json content
-			console.log(`[INFO] Fetching the json file at '${filePath}'...`);
-			let errorMessage = undefined;
-			let statusCode = 500; // default to internal server error
-			const response = await fetch(filePath, payload)
-				.catch((error) => { // error is caught while fetching json content (e.g. network error, failed to fetch)
-					errorMessage = String(error);
-				});
+		showTime: function() {
+			// map for converting month from digits to letters
+			var monthMap = new Map();
+			monthMap.set(1, 'Jan');
+			monthMap.set(2, 'Feb');
+			monthMap.set(3, 'Mar');
+			monthMap.set(4, 'Apr');
+			monthMap.set(5, 'May');
+			monthMap.set(6, 'Jun');
+			monthMap.set(7, 'Jul');
+			monthMap.set(8, 'Aug');
+			monthMap.set(9, 'Sep');
+			monthMap.set(10, 'Oct');
+			monthMap.set(11, 'Nov');
+			monthMap.set(12, 'Dec');
 
-			// process errors 
-			// 1) network errors - not able to make fetch call
-			// 2) bad request errors - fetch call succeeds but not receive content 
-			if (!response || (!response.ok && !response.status != 200)) {
-				// success fetch call but error exists (e.g. bad request)
-				if (!errorMessage) {
-					errorMessage = response?.statusText ?? "Unknown Error";
-					statusCode = response?.status; 
-				}
-				// display error in the popped up window
-				console.error(`[ERROR] [StatusCode = ${statusCode}] Unexpected error is caught while fetching the json content. `, errorMessage);
-				return;
+			// get current time
+			var date = new Date();
+			var month = date.getMonth() + 1; // 1 - 12
+			var day = date.getDate(); // 1 - 31
+			var h = date.getHours(); // 0 - 23
+			var m = date.getMinutes(); // 0 - 59
+			var s = date.getSeconds(); // 0 - 59
+			var session = "AM";
+			
+			// use AM/PM 
+			if (h == 0) {
+			    h = 12;
+			} else if (h > 12) {
+			    h = h - 12;
+			    session = "PM";
 			}
 			
-			const responseBody = await response.json();
-			console.log("[INFO] Successfully fetched the json content!", responseBody);
+			// format the numbers
+			h = (h < 10) ? "0" + h : h;
+			m = (m < 10) ? "0" + m : m;
+			s = (s < 10) ? "0" + s : s;
+			
+			// display the time dynamically
+			var time = `${monthMap.get(month)} ${day}\r\n${h}:${m}:${s}\r\n${session}`;
+			document.getElementById("digitalClock").innerText = time;
+			document.getElementById("digitalClock").textContent = time;
+			
+			// make clock count time
+			setTimeout(this.showTime, 1000);
+		},
+		fetchChampionsJson: async function() {
+		      var filePath = './utils/champions.json';
+		      var payload = {
+		       headers: {
+		         "Accept": "application/json",
+		         "Content-Type": "application/json",
+		       },
+		       method: "GET"
+		      }
+		      
+		      // try making fetch call to get the json content
+		      console.log(`[INFO] Fetching the json file at '${filePath}'...`);
+		      let errorMessage = undefined;
+		      let statusCode = 500; // default to internal server error
+		      const response = await fetch(filePath, payload)
+		       .catch((error) => { // error is caught while fetching json content (e.g. network error, failed to fetch)
+		         errorMessage = String(error);
+		       });
+
+		      // process errors 
+		      // 1) network errors - not able to make fetch call
+		      // 2) bad request errors - fetch call succeeds but not receive content 
+		      if (!response || (!response.ok && !response.status != 200)) {
+		       // success fetch call but error exists (e.g. bad request)
+		       if (!errorMessage) {
+		         errorMessage = response?.statusText ?? "Unknown Error";
+		         statusCode = response?.status; 
+		       }
+		       // display error in the popped up window
+		       console.error(`[ERROR] [StatusCode = ${statusCode}] Unexpected error is caught while fetching the json content. `, errorMessage);
+		       return;
+		      }
+		      
+		      const responseBody = await response.json();
+		      console.log("[INFO] Successfully fetched the json content!", responseBody);
+
+		      var data = responseBody.data;
+		      var championsWithBrokenLinks = [
+		      	"Akshan", "Bel'Veth", "Gwen", "K'Sante", "Nilah", "Rell", "Renata Glasc", "Vex", "Viego", "Zeri"
+		      ];
+
+		      // only filter the data to be displayed in the table
+		      var parsedData = Object.values(data).map(champion => {
+		      	return {
+		      		name: champion.name,
+			      	tags: champion.tags.join(", "),
+			      	title: champion.title,
+			      	// some links are broken in the Riot's data dragon datasets
+			      	// use locally stored images instead
+			      	image: championsWithBrokenLinks.includes(champion.name) ? 
+			      		`./imgs/${champion.name}.png` : 
+			      		`http://ddragon.leagueoflegends.com/cdn/10.23.1/img/champion/${champion.image.full}`
+		      	}
+		      });
+
+		      // pass the parsed data to vue 
+		      this.interest.lol.json = Object.values(parsedData);
+		      console.log("Successfully parsed the data for champions: ", parsedData);
+		      return parsedData;
+		},
+		expandTable: function() {
+			var elements = document.getElementsByClassName("collapsibleBtn");
+			for (let i = 0; i < elements.length; i ++) {
+			  elements[i].addEventListener("click", function() {
+			    this.classList.toggle("active");
+			    var content = this.nextElementSibling;
+			    if (content.style.maxHeight){
+			      content.style.maxHeight = null;
+			    } else {
+			      content.style.maxHeight = content.scrollHeight + "px";
+			    } 
+			  });
+			}
 		}
+	},
+	beforeMount() {
 	}
 };
