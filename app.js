@@ -274,7 +274,7 @@ var APP = {
 	},
 	created: function showTime() {
 		// only count the time if there's a digital clock
-		if (!document.getElementById("digitalClock")) {
+		if (true) {
 			return;
 		}
 
