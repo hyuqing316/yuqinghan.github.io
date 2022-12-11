@@ -17,7 +17,7 @@
 				<symbol v-for="svg in svgData" :view-box.camel="svg.viewBox" :id="svg.id">
 					<path v-for="path in svg.paths" :d="path"/>
 				</symbol>
-				<symbol v-for="svg in resume.svg" :view-box.camel="svg.viewBox" :id="svg.id">
+				<symbol v-for="svg in interest.svg" :view-box.camel="svg.viewBox" :id="svg.id">
 					<path v-for="path in svg.paths" :d="path"/>
 				</symbol>
 			</svg>
@@ -45,30 +45,58 @@
 				</p>
 			</div>
 
-			<div id="lol" class="interestSection">
-				<div class="interestSection_title">
-					<a :href="interest.lol.href">{{interest.lol.title}}</a>
-					<img :src="interest.lol.imgSrc" alt="lol"/>
-				</div>
+			<div id="lol" class="interestSection darkBackground">
+				<div class="lolContainer">
+					<div class="interestSection_title">
+						<a :href="interest.lol.href">{{interest.lol.title}}</a>
+						<img :src="interest.lol.imgSrc" alt="lol"/>
+					</div>
+					<div class="sectionContainer">
+						<p class="quote">
+							<svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#leftQuote"></use></svg>
+						</p>
 
-				<div class="contrast">
-					<p>
-						
-					</p>
+						<p class="interestSection_text blueHref">
+							{{interest.lol.universe.intro1}}
+							<a :href="interest.lol.universe.mobaHref">{{interest.lol.universe.moba}}</a>,
+							{{interest.lol.universe.intro2}}
+						</p>
 
-					<button id="lolBtn" class="collapsibleBtn">{{interest.lol.btnName}}</button>
-					<div class="lolCard">
-						<table id="lol_champions">
-							<tr>
-								<th v-for="attribute in interest.lol.tableAttributes">{{attribute}}</th>
-							</tr>
-							<tr v-for="item in interest.lol.json" :key="item.id">
-								<td><img :src="item.image" :alt="item.id"/></td>
-								<td>{{item.name}}</td>
-								<td>{{item.title}}</td>
-								<td>{{item.tags}}</td>
-							</tr>
-						</table>
+						<p class="quote">
+							<svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#rightQuote"></use></svg>
+						</p>
+					</div>
+
+					<div class="sectionContainer">
+						<a class="sectionContainerTitle" :href="interest.lol.regionsHref">{{interest.lol.regionsName}}</a><br>
+						<p class="blueHref">@credits from <a :href="interest.lol.regionsHref">{{interest.lol.regionsCredits}}</a></p>
+						<div class="regionImgContainer">
+						    <div class="regionImg" v-for="region in interest.lol.regions">
+						    	<fig>
+						    		<img :src="region.imgSrc">
+						    		<figcaption>{{region.name}}</figcaption>
+						    	</fig> 
+						    </div>
+						</div>
+					</div>
+
+					<div class="sectionContainer">
+						<a class="sectionContainerTitle" :href="interest.lol.champsHref">{{interest.lol.champsName}}</a>
+						<p class="blueHref">Data fetched from <a :href="interest.lol.champsCreditsHref">{{interest.lol.champsCredits}}</a></p>
+						<button id="lolBtn" class="collapsibleBtn">{{interest.lol.btnName}}</button>
+						<div class="lolCard">
+							<table id="lol_champions">
+								<tr>
+									<th v-for="attribute in interest.lol.tableAttributes">{{attribute}}</th>
+								</tr>
+								<tr v-for="item in interest.lol.json" :key="item.id">
+									<td><img :src="item.image" :alt="item.id"/></td>
+									<td>{{item.name}}</td>
+									<td>{{item.title}}</td>
+									<td>{{item.tags}}</td>
+								</tr>
+							</table>
+						</div>
 					</div>
 				</div>
 				

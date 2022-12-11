@@ -267,6 +267,26 @@ var APP = {
 		},
 		interest: {
 			header: 'MY INTERETS!',
+			svg: [
+				{
+					id: "leftQuote",
+					ref: "#leftQuote",
+					viewBox: "0 0 123.961 123.961",
+					paths: [
+						"M49.8,29.032c3.1-1.3,4.4-5,3-8l-4.9-10.3c-1.4-2.899-4.8-4.2-7.8-2.899c-8.5,3.6-15.8,8.3-21.6,14C11.4,28.532,6.6,36.232,4,44.732c-2.6,8.601-4,20.3-4,35.2v30.7c0,3.3,2.7,6,6,6h39.3c3.3,0,6-2.7,6-6v-39.3c0-3.301-2.7-6-6-6H26.5c0.2-10.101,2.6-18.2,7-24.301C37.1,36.133,42.5,32.133,49.8,29.032z",
+						"M120.4,29.032c3.1-1.3,4.399-5,3-8l-4.9-10.199c-1.4-2.9-4.8-4.2-7.8-2.9c-8.4,3.6-15.601,8.3-21.5,13.9c-7.101,6.8-12,14.5-14.601,23c-2.6,8.399-3.899,20.1-3.899,35.1v30.7c0,3.3,2.7,6,6,6H116c3.3,0,6-2.7,6-6v-39.3c0-3.301-2.7-6-6-6H97.1c0.2-10.101,2.601-18.2,7-24.301C107.7,36.133,113.1,32.133,120.4,29.032z"
+					]
+				},
+				{
+					id: "rightQuote",
+					ref: "#rightQuote",
+					viewBox: "0 0 32 32",
+					paths: [
+						"M0,4v12h8c0,4.41-3.586,8-8,8v4c6.617,0,12-5.383,12-12V4H0z",
+						"M20,4v12h8c0,4.41-3.586,8-8,8v4c6.617,0,12-5.383,12-12V4H20z"
+					]
+				}
+			],
 			lol: {
 				title: '01. LEAGUE OF LEGENDS',
 				href: 'https://www.leagueoflegends.com/en-us/',
@@ -278,7 +298,74 @@ var APP = {
 					'Tags'
 				],
 				json: {}, // placeholder that will be populated
-				btnName: 'Runbook of All LOL Champions'
+				btnName: 'Runbook of All LOL Champions',
+				universe: {
+					intro1: 'Well known as one of the most popular ',
+					moba: 'MOBA games',
+					mobaHref: 'https://leagueoflegends.fandom.com/wiki/User_blog:Xeroshifter/Noob_to_Pro:_What_is_A_MOBA',
+					intro2: 'League of Legends has built a giant universe with over 13 regions and more than 140 champions. Each region can be observed with intriguing history from its origin to the latest development such as conflicts and revolution. Each champion comes with a well told story, which vividly depict his or her personalities and life journeys.'
+				},
+				regionsName: 'REGIONS',
+				regionsHref: 'https://universe.leagueoflegends.com/en_US/regions/',
+				regionsCredits: 'universe.leagueoflegends.com',
+				champsName: 'CHAMPIONS',
+				champsHref: 'https://universe.leagueoflegends.com/en_US/champions/',
+				champsCredits: 'Riot public "Data Dragon" database',
+				champsCreditsHref: 'https://developer.riotgames.com/docs/lol#data-dragon_champions',
+				regions: [
+					{
+						name: 'BANDLE CITY',
+						imgSrc: './imgs/bandle_city.gif'
+					},
+					{
+						name: 'BILGEWATER',
+						imgSrc: './imgs/bilgewater.gif'
+					},
+					{
+						name: 'DEMACIA',
+						imgSrc: './imgs/demacia.gif'
+					},
+					{
+						name: 'IONIA',
+						imgSrc: './imgs/ionia.gif'
+					},
+					{
+						name: 'IXTAL',
+						imgSrc: './imgs/ixtal.gif'
+					},
+					{
+						name: 'NOXUS',
+						imgSrc: './imgs/noxus.gif'
+					},
+					{
+						name: 'PILTOVER',
+						imgSrc: './imgs/piltover.gif'
+					},
+					{
+						name: 'SHADOW ISLES',
+						imgSrc: './imgs/shadow_isles.gif'
+					},
+					{
+						name: 'SHURIMA',
+						imgSrc: './imgs/shurima.gif'
+					},
+					{
+						name: 'TARGON',
+						imgSrc: './imgs/targon.gif'
+					},
+					{
+						name: 'THE FRELJORD',
+						imgSrc: './imgs/freljord.gif'
+					},
+					{
+						name: 'THE VOID',
+						imgSrc: './imgs/void.gif'
+					},
+					{
+						name: 'ZAUN',
+						imgSrc: './imgs/zaun.gif'
+					},
+				]
 			},
 			nextSection: {
 				name: 'Contact',
@@ -339,64 +426,64 @@ var APP = {
 			setTimeout(this.showTime, 1000);
 		},
 		fetchChampionsJson: async function() {
-		      var filePath = './utils/champions.json';
-		      var payload = {
-		       headers: {
-		         "Accept": "application/json",
-		         "Content-Type": "application/json",
-		       },
-		       method: "GET"
-		      }
-		      
-		      // try making fetch call to get the json content
-		      console.log(`[INFO] Fetching the json file at '${filePath}'...`);
-		      let errorMessage = undefined;
-		      let statusCode = 500; // default to internal server error
-		      const response = await fetch(filePath, payload)
-		       .catch((error) => { // error is caught while fetching json content (e.g. network error, failed to fetch)
-		         errorMessage = String(error);
-		       });
+			var filePath = './utils/champions.json';
+			var payload = {
+				headers: {
+					"Accept": "application/json",
+					"Content-Type": "application/json",
+				},
+				method: "GET"
+			}
+			
+			// try making fetch call to get the json content
+			console.log(`[INFO] Fetching the json file at '${filePath}'...`);
+			let errorMessage = undefined;
+			let statusCode = 500; // default to internal server error
+			const response = await fetch(filePath, payload)
+			 .catch((error) => { // error is caught while fetching json content (e.g. network error, failed to fetch)
+			   errorMessage = String(error);
+			 });
 
-		      // process errors 
-		      // 1) network errors - not able to make fetch call
-		      // 2) bad request errors - fetch call succeeds but not receive content 
-		      if (!response || (!response.ok && !response.status != 200)) {
-		       // success fetch call but error exists (e.g. bad request)
-		       if (!errorMessage) {
-		         errorMessage = response?.statusText ?? "Unknown Error";
-		         statusCode = response?.status; 
-		       }
-		       // display error in the popped up window
-		       console.error(`[ERROR] [StatusCode = ${statusCode}] Unexpected error is caught while fetching the json content. `, errorMessage);
-		       return;
-		      }
-		      
-		      const responseBody = await response.json();
-		      console.log("[INFO] Successfully fetched the json content!", responseBody);
+			// process errors 
+			// 1) network errors - not able to make fetch call
+			// 2) bad request errors - fetch call succeeds but not receive content 
+			if (!response || (!response.ok && !response.status != 200)) {
+			 // success fetch call but error exists (e.g. bad request)
+			 if (!errorMessage) {
+			   errorMessage = response?.statusText ?? "Unknown Error";
+			   statusCode = response?.status; 
+			 }
+			 // display error in the popped up window
+			 console.error(`[ERROR] [StatusCode = ${statusCode}] Unexpected error is caught while fetching the json content. `, errorMessage);
+			 return;
+			}
+			
+			const responseBody = await response.json();
+			console.log("[INFO] Successfully fetched the json content!", responseBody);
 
-		      var data = responseBody.data;
-		      var championsWithBrokenLinks = [
-		      	"Akshan", "Bel'Veth", "Gwen", "K'Sante", "Nilah", "Rell", "Renata Glasc", "Vex", "Viego", "Zeri"
-		      ];
+			var data = responseBody.data;
+			var championsWithBrokenLinks = [
+				"Akshan", "Bel'Veth", "Gwen", "K'Sante", "Nilah", "Rell", "Renata Glasc", "Vex", "Viego", "Zeri"
+			];
 
-		      // only filter the data to be displayed in the table
-		      var parsedData = Object.values(data).map(champion => {
-		      	return {
-		      		name: champion.name,
-			      	tags: champion.tags.join(", "),
-			      	title: champion.title,
-			      	// some links are broken in the Riot's data dragon datasets
-			      	// use locally stored images instead
-			      	image: championsWithBrokenLinks.includes(champion.name) ? 
-			      		`./imgs/${champion.name}.png` : 
-			      		`http://ddragon.leagueoflegends.com/cdn/10.23.1/img/champion/${champion.image.full}`
-		      	}
-		      });
+			// only filter the data to be displayed in the table
+			var parsedData = Object.values(data).map(champion => {
+				return {
+					name: champion.name,
+					tags: champion.tags.join(", "),
+					title: champion.title,
+					// some links are broken in the Riot's data dragon datasets
+					// use locally stored images instead
+					image: championsWithBrokenLinks.includes(champion.name) ? 
+						`./imgs/${champion.name}.png` : 
+						`http://ddragon.leagueoflegends.com/cdn/10.23.1/img/champion/${champion.image.full}`
+				}
+			});
 
-		      // pass the parsed data to vue 
-		      this.interest.lol.json = Object.values(parsedData);
-		      console.log("Successfully parsed the data for champions: ", parsedData);
-		      return parsedData;
+			// pass the parsed data to vue 
+			this.interest.lol.json = Object.values(parsedData);
+			console.log("Successfully parsed the data for champions: ", parsedData);
+			return parsedData;
 		},
 		expandTable: function() {
 			var elements = document.getElementsByClassName("collapsibleBtn");
@@ -405,9 +492,9 @@ var APP = {
 			    this.classList.toggle("active");
 			    var content = this.nextElementSibling;
 			    if (content.style.maxHeight){
-			      content.style.maxHeight = null;
+				content.style.maxHeight = null;
 			    } else {
-			      content.style.maxHeight = content.scrollHeight + "px";
+				content.style.maxHeight = content.scrollHeight + "px";
 			    } 
 			  });
 			}
