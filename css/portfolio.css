@@ -68,7 +68,7 @@
 	float: right;
 	display: block;
 	margin-right: 150px;
-	margin-top: 350px;
+	margin-top: 300px;
 	text-align: left;
 	width: 25%;
 	z-index: 2;
@@ -200,14 +200,4 @@
 
 .hrefLink:hover {
 	color: #17D4FE;
-}
-
-/* Digital clock */
-.clock {
-	color: black;
-	text-shadow: 3px 3px #6f8f17;
-	font-size: 50px;
-	font-family: Orbitron;
-	letter-spacing: 7px;
-	white-space: pre;
 }

@@ -134,3 +134,13 @@ footer {
 	font-size: 30px;
 	color: rgb(119, 119, 119);
 }
+
+/* Digital clock */
+.clock {
+	color: black;
+	text-shadow: 3px 3px #6f8f17;
+	font-size: 50px;
+	font-family: Orbitron;
+	letter-spacing: 7px;
+	white-space: pre;
+}

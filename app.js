@@ -273,11 +273,6 @@ var APP = {
 		}
 	},
 	created: function showTime() {
-		// only count the time if there's a digital clock
-		if (true) {
-			return;
-		}
-
 		// map for converting month from digits to letters
 		var monthMap = new Map();
 		monthMap.set(1, 'Jan');
@@ -325,12 +320,11 @@ var APP = {
 	},
 	methods: {
 		fetchChampionsJosn: async function() {
-			var filePath = 'http://ddragon.leagueoflegends.com/cdn/12.23.1/data/en_US/champion/Aatrox.json';
+			var filePath = './utils/champions.json';
 			var payload = {
 				headers: {
 					"Accept": "application/json",
 					"Content-Type": "application/json",
-					'Access-Control-Allow-Origin': '*'
 				},
 				method: "GET"
 			}
