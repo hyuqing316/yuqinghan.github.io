@@ -1,0 +1,136 @@
+body {
+	background-color: #fcfaf7;
+	font-family: "Lucida Sans Typewriter","Lucida Console",Monaco,"Bitstream Vera Sans Mono",monospace;
+	overflow-x: hidden;
+	max-width: 100%;
+}
+
+header {
+	font-size: 50px;
+}
+
+footer {
+	position: fixed;
+	bottom: 0px;
+	text-align: center;
+	margin: auto;
+	padding-top: 100px;
+	width: 100%;
+	font-size: small;
+	z-index: 100;
+}
+
+/* Scrollable div */
+.scrollable {
+	position: relative;
+	overflow-y: scroll;
+}
+
+.longPage {
+	height: 1500px;
+}
+
+/* Fixed sdie navigation menu */
+.hide {
+	display: none;
+}
+
+.menu {
+	font-weight: 100;
+	background: black;
+	width: 400px;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	z-index: 100;
+	-webkit-box-shadow: -3px 0px 3px 0px #6f8f17;
+	box-shadow: -3px 0px 3px 0px #6f8f17;
+	right: -300px;
+	transition: all 0.3s;
+	-webkit-transition: all 0.3s;
+	color: white;
+}
+
+.menu svg {
+	padding-right: 20px;
+	width: 40px;
+	height: 30px;
+}
+
+.menu:hover, .menu:focus {
+	transform: translate3d(-200px, 0, 0);
+	animation-timing-function: 1s ease-in;
+}
+
+.menu .title {
+	position: absolute;
+	top: 50%;
+	left: 0%;
+	-webkit-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	transform: translateY(-50%);
+	transform: rotate(270deg);
+	font-weight: 800;
+	font-size: 20px;
+}
+.menu .nav {
+	position: absolute;
+	top: 50%;
+	left: 0%;
+	-webkit-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	transform: translateY(-50%);
+	font-weight: 100;
+}
+.menu .nav li {
+	padding-bottom: 30px;
+	list-style-type: none;
+}
+
+.menu .nav li a {
+	display: block;
+	text-decoration: none;
+	fill: #fefefe;
+	color: inherit;
+	transition: all 0.3s;
+	-webkit-transition: all 0.3s;
+	font-size: 30px;
+	padding-left: 0px;
+}
+
+.menu .nav li a:hover {
+	color: #6f8f17;
+	fill: #6f8f17;
+	transform: scale(1.25);
+	font-weight: bold;
+}
+
+/* ending section */
+.endSection {
+	display: block;
+	margin: auto;
+	width: 80%;
+	text-align: center;
+	font-weight: bold;
+	padding-top: 50px;
+	padding-bottom: 150px;
+	font-size: 60px;
+	color: #fcfaf7;
+}
+
+.endSection a:visited,
+.endSection a:link,
+.endSection a:active,
+.endSection a:hover {
+	text-decoration: none;
+	color: #fcfaf7;
+}
+
+.endSection a:visited {
+	color: #fcfaf7;
+}
+
+.endSection_title {
+	font-size: 30px;
+	color: rgb(119, 119, 119);
+}

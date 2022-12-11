@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+	<meta charset="utf-8">
+	<title>&#9729;&#65039; | YUQING HAN</title>
+	<link rel="stylesheet" href="./css/main.css">
+	<link rel="stylesheet" href="./css/resume.css">
+	<link rel="stylesheet" href='https://fonts.googleapis.com/css?family=Orbitron'>
+</head>
+
+<body>
+	<div class="scrollable" id="app">
+		<!-- svg components -->
+		<div class="hide">
+			<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+				<symbol v-for="svg in svgData" :view-box.camel="svg.viewBox" :id="svg.id">
+					<path v-for="path in svg.paths" :d="path"/>
+				</symbol>
+				<symbol v-for="svg in resume.svg" :view-box.camel="svg.viewBox" :id="svg.id">
+					<path v-for="path in svg.paths" :d="path"/>
+				</symbol>
+			</svg>
+		</div>
+
+		<div class="scrollable longPage" id="resume_page">
+			<!-- page menu -->
+			<div class="menu">
+				<ul class="nav">
+					<li v-for="svg in svgData">
+						<a :href="svg.href">
+							<svg>
+								<use xmlns:xlink="http://www.w3.org/1999/xlink" :xlink:href="svg.ref"></use>
+							</svg>{{svg.value}}
+						</a>
+					</li>
+				</ul>
+			</div>
+
+			<div class="resume">
+				<div class="resumeHeader">
+					<p>{{resume.header}}</p>
+				</div>
+				<div class="resumeBody">
+					<h1 class="resumeName">{{resume.name}}</h1>
+					<p class="resumeInfo">
+						<a v-for="svg in resume.svg">
+							<svg>
+								<use xmlns:xlink="http://www.w3.org/1999/xlink" :xlink:href="svg.ref"></use>
+							</svg> {{svg.value}}
+						</a>
+					</p>
+
+					<!-- education -->
+					<div class="resumeSection">
+						<a class="resumeSectionTitle">{{resume.education.title}}</a>
+						<hr>
+						<div v-for="school in resume.education.schools">
+							<div class="resumeItemHeader">
+								<span class="left">{{school.name}}</span>
+								<span class="right">{{school.time}}</span>
+							</div>
+							<span class="resumeItem">{{school.major}}</span>
+						</div>
+					</div>
+
+					<!-- skills -->
+					<div class="resumeSection">
+						<a class="resumeSectionTitle">{{resume.skills.title}}</a>
+						<hr>
+						<div class="skillItem" v-for="area in resume.skills.areas">
+							<a class="strong">{{area.name}}</a> 
+							<a v-for="item in area.items">{{item}}</a>
+						</div>
+					</div>
+
+					<!-- work -->
+					<div class="resumeSection">
+						<a class="resumeSectionTitle">{{resume.work.title}}</a>
+						<hr>
+						<div v-for="experience in resume.work.experiences">
+							<div class="resumeItemHeader">
+								<span class="left">{{experience.name}}</span>
+								<span class="right">{{experience.time}}</span>
+							</div>
+							<ul>
+								<li v-for="responsibility in experience.responsibilities">{{responsibility}}</li>
+							</ul>
+						</div>
+					</div>
+
+					<!-- research -->
+					<div class="resumeSection">
+						<a class="resumeSectionTitle">{{resume.research.title}}</a>
+						<hr>
+						<div v-for="experience in resume.research.experiences">
+							<div class="resumeItemHeader">
+								<span class="left">{{experience.name}}</span>
+								<span class="right">{{experience.languages}}</span>
+							</div>
+							<ul>
+								<li v-for="responsibility in experience.responsibilities">{{responsibility}}</li>
+							</ul>
+						</div>
+					</div>
+				</div>	
+			</div>
+
+			<!-- transition section -->
+		 	<div id="transition_section" class="contrast">
+		 		<div class="endSection">
+			 		<p class="endSection_title">
+		 				{{endSection.title}}
+		 			</p>
+		 			<p><a :href="resume.nextSection.href">{{resume.nextSection.name}}</a></p>
+		 		</div>
+		 	</div>
+		</div>
+
+	</div>
+	<footer>&#169; Yuing Han</footer>
+	 
+ 	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+	<script src="./app.js">
+		import APP from '.app.js';
+	</script>
+	<script>
+		new Vue(APP);
+	</script>
+</body>
+</html>

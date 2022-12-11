@@ -4,75 +4,107 @@
 <head>
 	<meta charset="utf-8">
 	<title>&#9729;&#65039; | YUQING HAN</title>
-	<link rel="stylesheet" href="./main.css">
+	<link rel="stylesheet" href="./css/main.css">
+	<link rel="stylesheet" href="./css/portfolio.css">
 	<link rel="stylesheet" href='https://fonts.googleapis.com/css?family=Orbitron'>
 </head>
 
 <body>
-	<div id="app">
-<!--  	<label for="menu_icon" class="menu">
- 		<i class="icon"></i>
-		<i class="icon"></i>
-		<i class="icon"></i>
-	</label>
-	<input type="checkbox" id="menu_icon" class="menu-control" onclick="displaySideBar()">
-	
-	<aside id="side_bar" class="sidebar">
-	
-		<nav id="side_bar_nav" class="sidebar__menu">
-			<a href="">My story</a>
-			<a href="">111</a>
-			<a href="">222</a>
-			<a href="">333</a>
-			<a href="">Contact me</a>
-		</nav>
+	<div class="scrollable" id="app">
+		<!-- svg components -->
+		<div class="hide">
+			<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+				<symbol v-for="svg in svgData" :view-box.camel="svg.viewBox" :id="svg.id">
+					<path v-for="path in svg.paths" :d="path"/>
+				</symbol>
+			</svg>
+		</div>
 
-		<label for="menu-control" class="sidebar__close"></label>
-	</aside> -->
-
-	<!-- svg components -->
-	<div class="hide">
-		<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-			<symbol v-for="svg in svgData" :view-box.camel="svg.viewBox" :id="svg.id">
-				<path v-for="path in svg.paths" :d="path"/>
-			</symbol>
-		</svg>
-	</div>
-
-	<!-- page menu -->
-	<div class="menu">
-		<ul class="nav">
-			<li v-for="svg in svgData">
-				<a href="#">
-					<svg>
-						<use xmlns:xlink="http://www.w3.org/1999/xlink" :xlink:href="svg.ref"></use>
-					</svg>{{svg.value}}
-				</a>
-			</li>
-		</ul>
-	</div>
-
- 	<!-- intro container -->
- 	<div class="introContainer">
- 		<div class="flip-box">
-	 		<div class="flip-box-inner">
-			 	<div class="flip-box-front">
-			 		<img :src="intro.imgSrc" alt="storyPic"/>
-			 	</div>
-			 	<div class="flip-box-back">
-			 		<h2>
-			 			<a v-for="text in intro.texts">{{text}}<br></a>
-			 		</h2>
-				</div>
+		<div class="scrollable longPage" id="home_page">
+			<!-- page menu -->
+			<div class="menu">
+				<ul class="nav">
+					<li v-for="svg in svgData">
+						<a :href="svg.href">
+							<svg>
+								<use xmlns:xlink="http://www.w3.org/1999/xlink" :xlink:href="svg.ref"></use>
+							</svg>{{svg.value}}
+						</a>
+					</li>
+				</ul>
 			</div>
-	 	</div>
- 		<h1>My Story ...</h1>
- 	</div>
 
- 	<!-- digital clock floating at right -->
- 	<div class="rightContainer">
- 		<div id="digitalClock" class="clock"></div>
- 	</div>
+		 	<!-- intro container -->
+		 	<div class="introContainer">
+		 		<h1>{{intro.title}}</h1>
+		 		<div class="flip-box">
+			 		<div class="flip-box-inner">
+					 	<div class="flip-box-front">
+					 		<img :src="intro.imgSrc" alt="storyPic"/>
+					 	</div>
+					 	<div class="flip-box-back">
+					 		<h2>
+					 			<a v-for="text in intro.texts">{{text}}<br></a>
+					 		</h2>
+						</div>
+					</div>
+			 	</div>
+		 	</div>
+
+		 	<!-- digital clock floating at right -->
+		 	<div class="rightContainer">
+		 		<div id="digitalClock" class="clock"></div>
+		 	</div>
+
+		 	<!-- intro sections -->
+		 	<div class="midContainer">
+		 		<div class="contrast">
+		 			<div class="sloganSection slogan">
+			 			<p>{{intro.slogan}}</p>
+			 		</div>
+		 		</div>
+
+		 		<!-- student section -->
+		 		<div id="student_section" class="section style1">
+			 		<p>
+		 				{{intro.student[0]}}<a class="redText">{{intro.student[1]}}</a>{{intro.student[2]}}<br><br>
+		 				{{intro.student[3]}}<br><br>
+		 				{{intro.student[4]}}<a :href="intro.studentHref" class="redText hrefLink">{{intro.student[5]}}</a>,
+		 				{{intro.student[6]}}
+		 			</p>
+		 			<img src="./imgs/bu.png" alt="bu" class="buImg"/>
+			 	</div>
+
+			 	<!-- cats section -->
+			 	<div id="cats_section" class="contrast">
+			 		<div class="section style2">
+				 		<img src="./imgs/cats.jpg" alt="cats" class="catsImg"/>
+				 		<p>
+			 				<a class="yellowText">{{intro.cats.names[0]}}</a> and <a class="yellowText">{{intro.cats.names[1]}}</a>
+			 				<a v-for="text in intro.cats.texts">{{text}}<br><br></a>
+			 			</p>
+			 		</div>
+			 	</div>
+
+			 	<!-- snowboard section -->
+			 	<div id="snowboard_section" class="section style1">
+			 		<p>
+		 				<a v-for="text in intro.snowboard">{{text}}<br><br></a>
+		 			</p>
+		 			<img src="./imgs/snowboard.png" alt="snowboard" class="snowboardImg"/>
+			 	</div>
+
+			 	<!-- transition section -->
+			 	<div id="transition_section" class="contrast">
+			 		<div class="sloganSection endSection">
+				 		<p class="endSection_title">
+			 				{{endSection.title}}
+			 			</p>
+			 			<p><a href="./resume.html">{{intro.nextSection}}</a></p>
+			 		</div>
+			 	</div>
+		 	</div>
+		</div>
 
 	</div>
 	<footer>&#169; Yuing Han</footer>

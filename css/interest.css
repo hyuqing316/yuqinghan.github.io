@@ -1,0 +1,16 @@
+.contrast {
+	background-color: #9966cb;
+}
+
+.menu {
+	box-shadow: -3px 0px 3px 0px #9966cb;
+}
+
+.menu .nav li a:hover {
+	color: #9966cb;
+	fill: #9966cb;
+}
+
+.endSection_title {
+	color: #dedede;
+}
