@@ -170,10 +170,10 @@ a:hover {
 .inlineIntroContainer {
 	display: inline-block;
 	float: right;
-	width: 40%;
+	width: 35%;
 	margin: 10px 0px 10px 20px;
-	line-height: 1.4;
-	font-size: 18px;
+	line-height: 1.7;
+	font-size: 16px;
 }
 
 

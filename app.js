@@ -49,6 +49,19 @@ var APP = {
 				]
 			},
 			{
+				id: 'fun',
+				ref: "#fun",
+				value: 'Fun Facts',
+				href: "./fun.html",
+				viewBox: '0 0 512 512',
+				paths: [
+					'M256,0C114.618,0,0,114.618,0,256s114.618,256,256,256s256-114.618,256-256S397.382,0,256,0z M256,469.333c-117.818,0-213.333-95.515-213.333-213.333S138.182,42.667,256,42.667S469.333,138.182,469.333,256S373.818,469.333,256,469.333z',
+					'M341.333,213.333c23.573,0,42.667-19.093,42.667-42.667C384,147.093,364.907,128,341.333,128c-23.573,0-42.667,19.093-42.667,42.667C298.667,194.24,317.76,213.333,341.333,213.333z',
+					'M170.667,213.333c23.573,0,42.667-19.093,42.667-42.667c0-23.573-19.093-42.667-42.667-42.667C147.093,128,128,147.093,128,170.667C128,194.24,147.093,213.333,170.667,213.333z',
+					'M384,256c-11.782,0-21.333,9.551-21.333,21.333C362.667,333.434,312.101,384,256,384s-106.667-50.566-106.667-106.667c0-11.782-9.551-21.333-21.333-21.333c-11.782,0-21.333,9.551-21.333,21.333c0,79.665,69.669,149.333,149.333,149.333s149.333-69.669,149.333-149.333C405.333,265.551,395.782,256,384,256z'
+				]
+			},
+			{
 				id: 'paper-airplane',
 				ref: "#paper-airplane",
 				value: 'Contact',
@@ -383,8 +396,25 @@ var APP = {
 					]
 				}
 			},
+			travel: {
+				title: '02. TRAVELING'
+			},
 			nextSection: {
-				name: 'Contact',
+				name: 'Fun Facts',
+				href: './fun.html'
+			}
+		},
+		fun: {
+			titles: [ 'A LITTLE BIT', 'FUN FACTS ...' ],
+			maps: {
+				title: 'MY VISITED STATES',
+				blueInfo: ' represents the states that I\'ve been to.',
+				yellowInfo: ' represents the states that I\'m yet to visit.',
+				invite: 'Please come play with this map and see how many states that you have been to!',
+				json: {} // placeholder
+			},
+			nextSection: {
+				name: 'Contact Me',
 				href: './contact.html'
 			}
 		}
@@ -392,7 +422,9 @@ var APP = {
 	created: async function () {
 		this.showTime();
 		await this.fetchChampionsJson();
+		await this.fetchMapsJson();
 		this.expandTable();
+		this.displayMapHoverBox();
 	},
 	methods: {
 		showTime: function() {
@@ -442,14 +474,14 @@ var APP = {
 			setTimeout(this.showTime, 1000);
 		},
 		fetchChampionsJson: async function() {
-			var filePath = './utils/champions.json';
-			var payload = {
+			const filePath = './utils/champions.json';
+			const payload = {
 				headers: {
 					"Accept": "application/json",
 					"Content-Type": "application/json",
 				},
 				method: "GET"
-			}
+			};
 			
 			// try making fetch call to get the json content
 			console.log(`[INFO] Fetching the json file at '${filePath}'...`);
@@ -477,13 +509,13 @@ var APP = {
 			const responseBody = await response.json();
 			console.log("[INFO] Successfully fetched the json content!", responseBody);
 
-			var data = responseBody.data;
-			var championsWithBrokenLinks = [
+			const data = responseBody.data;
+			const championsWithBrokenLinks = [
 				"Akshan", "Bel'Veth", "Gwen", "K'Sante", "Nilah", "Rell", "Renata Glasc", "Vex", "Viego", "Zeri"
 			];
 
 			// only filter the data to be displayed in the table
-			var parsedData = Object.values(data).map(champion => {
+			const parsedData = Object.values(data).map(champion => {
 				return {
 					name: champion.name,
 					tags: champion.tags.join(", "),
@@ -497,8 +529,62 @@ var APP = {
 			});
 
 			// pass the parsed data to vue 
-			this.interest.lol.json = Object.values(parsedData);
+			this.interest.lol.json = parsedData;
 			console.log("Successfully parsed the data for champions: ", parsedData);
+			return parsedData;
+		},
+		fetchMapsJson: async function() {
+			var filePath = './utils/maps.json';
+			var payload = {
+				headers: {
+					"Accept": "application/json",
+					"Content-Type": "application/json",
+				},
+				method: "GET"
+			};
+			
+			// try making fetch call to get the json content
+			console.log(`[INFO] Fetching the json file at '${filePath}'...`);
+			let errorMessage = undefined;
+			let statusCode = 500; // default to internal server error
+			const response = await fetch(filePath, payload)
+			 .catch((error) => { // error is caught while fetching json content (e.g. network error, failed to fetch)
+			   errorMessage = String(error);
+			 });
+
+			// process errors 
+			// 1) network errors - not able to make fetch call
+			// 2) bad request errors - fetch call succeeds but not receive content 
+			if (!response || (!response.ok && !response.status != 200)) {
+			 // success fetch call but error exists (e.g. bad request)
+			 if (!errorMessage) {
+			   errorMessage = response?.statusText ?? "Unknown Error";
+			   statusCode = response?.status; 
+			 }
+			 // display error in the popped up window
+			 console.error(`[ERROR] [StatusCode = ${statusCode}] Unexpected error is caught while fetching the json content. `, errorMessage);
+			 return;
+			}
+			
+			const responseBody = await response.json();
+			console.log("[INFO] Successfully fetched the json content!", responseBody);
+
+			const data = responseBody.states;
+			const visitedStates = [
+				"CA", "NV", "MA", "WA", "HI", "ID", "WY", "UT", "NC", "MT", "NY"
+			];
+
+			// only filter the data to be displayed in the table
+			const parsedData = data.map(state => {
+				return {
+					...state,
+					colors: visitedStates.includes(state.id) ? [137, 207, 240] : [253, 218, 13]
+				};
+			});
+
+			// pass the parsed data to vue 
+			this.fun.maps.json = parsedData;
+			console.log("Successfully parsed the data for the US maps: ", parsedData);
 			return parsedData;
 		},
 		expandTable: function() {
@@ -514,6 +600,26 @@ var APP = {
 			    } 
 			  });
 			}
+		},
+		displayMapHoverBox: function() {
+			var hoverBox = document.getElementById('map-hover-box');
+
+			document.addEventListener('mouseover', function (e) {
+				if (e.target.tagName == 'path') {
+					var content = e.target.dataset.name;
+					hoverBox.innerHTML = content;
+					hoverBox.style.opacity = "100%";
+				} else {
+					hoverBox.style.opacity = "0%";
+				}
+			});
+
+			window.onmousemove = function (e) {
+				var x = e.clientX;
+				var y = e.clientY;
+				hoverBox.style.top = (y + 20) + 'px';
+				hoverBox.style.left = (x) + 'px';
+			};
 		}
 	},
 	beforeMount() {

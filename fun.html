@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+	<meta charset="utf-8">
+	<title>&#9729;&#65039; | YUQING HAN</title>
+	<link rel="stylesheet" href="./css/main.css">
+	<link rel="stylesheet" href="./css/fun.css">
+	<link rel="stylesheet" href='https://fonts.googleapis.com/css?family=Orbitron'>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+</head>
+
+<body>
+	<div class="scrollable" id="app">
+		<!-- svg components -->
+		<div class="hide">
+			<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+				<symbol v-for="svg in svgData" :view-box.camel="svg.viewBox" :id="svg.id">
+					<path v-for="path in svg.paths" :d="path"/>
+				</symbol>
+			</svg>
+			<div id="digitalClock" class="clock"></div>
+		</div>
+
+		<!-- interest page -->
+		<div class="scrollable longPage" id="fun_page">
+			<!-- page menu -->
+			<div class="menu">
+				<ul class="nav">
+					<li v-for="svg in svgData">
+						<a :href="svg.href">
+							<svg>
+								<use xmlns:xlink="http://www.w3.org/1999/xlink" :xlink:href="svg.ref"></use>
+							</svg>{{svg.value}}
+						</a>
+					</li>
+				</ul>
+			</div>
+
+			<div class="header">
+				<a>{{fun.titles[0]}}</a><br>
+				<a class="larger">{{fun.titles[1]}}</a>
+			</div>
+
+			<!-- us map section -->
+			<div class="mapContainer">
+				<h1 class="mapContainerTitle">{{fun.maps.title}}</h1>
+				<p class="mapContainerText">
+					<a><span class="dot blue"></span>{{fun.maps.blueInfo}}</a><br>
+					<a><span class="dot yellow"></span>{{fun.maps.yellowInfo}}</a><br><br>
+					<a>{{fun.maps.invite}}</a>
+				</p>
+				<div class="mapHoverBox" id="map-hover-box"></div>
+ 				<svg xmlns:dc="http://purl.org/dc/elements/1.1/"
+					xmlns:cc="http://creativecommons.org/ns#"
+					xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+					xmlns:svg="http://www.w3.org/2000/svg"
+					xmlns="http://www.w3.org/2000/svg"
+					xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+					xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+					enable_background="new 0 0 1000 589"
+					height="589px"
+					pretty_print="False"
+					version="1.1"
+					viewBox="0 0 1000 589"
+					preserveAspectRatio="xMinYMin meet"
+					inkscape:version="0.48.4 r9939"
+					sodipodi:docname="us.svg">
+					<path v-for="state in fun.maps.json" 
+						  :id="state.id" 
+						  :data-name="state.name"
+						  :data-id="state.id"
+						  :d="state.d"
+						  :style="{ fill: `rgba(${state.colors.join(',')})` }"/>
+				</svg>
+			</div>
+
+			<!-- transition section -->
+		 	<div id="transition_section" class="contrast">
+		 		<div class="endSection">
+			 		<p class="endSection_title">
+		 				{{endSection.title}}
+		 			</p>
+		 			<p><a :href="interest.nextSection.href">{{fun.nextSection.name}}</a></p>
+		 		</div>
+		 	</div>
+		</div>
+
+	</div>
+	<footer>&#169; Yuqing Han</footer>
+	 
+ 	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+	<script src="./app.js">
+		import APP from '.app.js';
+	</script>
+	<script>
+		new Vue(APP);
+	</script>
+	<script>
+		
+	</script>
+</body>
+</html>
