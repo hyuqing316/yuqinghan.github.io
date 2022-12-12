@@ -2,6 +2,7 @@
 var APP = {
 	el: "#app",
 	data: {
+		// svg for menu icons
 		svgData: [
 			{
 				id: 'home',
@@ -65,19 +66,21 @@ var APP = {
 				id: 'paper-airplane',
 				ref: "#paper-airplane",
 				value: 'Contact',
-				href: "#home_page5",
+				href: "./contact.html",
 				viewBox: '-313 288.4 36.1 37.3',
 				paths: [
 					"M-312.1 309l8.8 4.6 1.8 10.7c.1.7.7 1.2 1.3 1.3h.3c.6 0 1.1-.3 1.4-.7l4.6-7.5 9.7 4.8c.2.1.5.2.7.2s.5-.1.7-.2c.5-.2.8-.7.9-1.2l4.8-30c.2-.9-.3-1.9-1.2-2.3-.7-.4-1.6-.4-2.2 0l-31.9 17.4c-.5.3-.8.8-.8 1.5.2.6.5 1.2 1.1 1.4zm27.4 9.3l-7.4-3.6 10.8-17.4-3.4 21zm-11.2-3.9l-3.1 5-1.1-6.3 12.9-12.8-8.7 14.1zm7.8-17.7l-14.1 13.8-5.8-3 19.9-10.8z"	
 				]
 			}
 		],
+		// home page data attributes
 		home: {
 			nextSection: {
 				name: 'Portfolio',
 				href: './portfolio.html'
 			}
 		},
+		// portfolip page data attributes
 		intro: {
 			imgSrc: './imgs/intro.jpg',
 			title: 'My Story ...',
@@ -123,6 +126,7 @@ var APP = {
 		endSection: {
 			title: 'NEXT UP'
 		},
+		// resume page data attributes
 		resume: {
 			header: 'MY RESUMÉ',
 			name: 'YUQING HAN',
@@ -284,6 +288,7 @@ var APP = {
 				href: './interest.html'
 			}
 		},
+		// interest page data attributes
 		interest: {
 			header: 'MY INTERETS!',
 			svg: [
@@ -402,21 +407,19 @@ var APP = {
 					]
 				}
 			},
-			travel: {
-				title: '02. TRAVELING'
-			},
 			nextSection: {
 				name: 'Fun Facts',
 				href: './fun.html'
 			}
 		},
+		// fun facts page data attributes
 		fun: {
 			titles: [ 'A LITTLE BIT', 'FUN FACTS ...' ],
 			maps: {
 				title: 'MY VISITED STATES',
 				blueInfo: ' represents the states that I\'ve been to.',
 				yellowInfo: ' represents the states that I\'m yet to visit.',
-				invite: 'Please come play with this map and see how many states that you have been to!',
+				invite: 'Can you explore this map and see how many states that you have been to?',
 				json: {} // placeholder
 			},
 			nextSection: {
@@ -433,6 +436,9 @@ var APP = {
 		this.displayMapHoverBox();
 	},
 	methods: {
+		/**
+		* Display the digital clock with time counting per second
+		*/
 		showTime: function() {
 			// map for converting month from digits to letters
 			var monthMap = new Map();
@@ -454,15 +460,16 @@ var APP = {
 			var month = date.getMonth() + 1; // 1 - 12
 			var day = date.getDate(); // 1 - 31
 			var h = date.getHours(); // 0 - 23
+
 			var m = date.getMinutes(); // 0 - 59
 			var s = date.getSeconds(); // 0 - 59
 			var session = "AM";
 			
-			// use AM/PM 
+			// use AM / PM 
 			if (h == 0) {
 			    h = 12;
-			} else if (h > 12) {
-			    h = h - 12;
+			} else if (h >= 12) {
+				h = h > 12 ? h - 12 : h;
 			    session = "PM";
 			}
 			
@@ -479,6 +486,9 @@ var APP = {
 			// make clock count time
 			setTimeout(this.showTime, 1000);
 		},
+		/**
+		* Fetch json file located at the file path provided by the user
+		*/
 		fetchJson: async function(filePath) {
 			const payload = {
 				headers: {
@@ -515,6 +525,9 @@ var APP = {
 			console.log("[INFO] Successfully fetched the json content!", responseBody);
 			return responseBody;
 		},
+		/**
+		* Fetch json file with data related to the lol champions
+		*/
 		fetchChampionsJson: async function() {
 			const filePath = './utils/champions.json';
 			const responseBody = await this.fetchJson(filePath);
@@ -546,6 +559,9 @@ var APP = {
 			console.log("Successfully parsed the data for champions: ", parsedData);
 			return parsedData;
 		},
+		/**
+		* Fetch json file related to the data of us states
+		*/
 		fetchMapsJson: async function() {
 			var filePath = './utils/maps.json';
 			const responseBody = await this.fetchJson(filePath);
@@ -571,28 +587,43 @@ var APP = {
 			console.log("Successfully parsed the data for the US maps: ", parsedData);
 			return parsedData;
 		},
+		/**
+		* Make the container expandable / collapsible whenever user interacts with the button
+		*/
 		expandTable: function() {
+			// find the DOM elements with the class for expansion and collapse
 			var elements = document.getElementsByClassName("collapsibleBtn");
+			// iterate over the elements
 			for (let i = 0; i < elements.length; i ++) {
-			  elements[i].addEventListener("click", function() {
-			    this.classList.toggle("active");
-			    var content = this.nextElementSibling;
-			    if (content.style.maxHeight){
-				content.style.maxHeight = null;
-			    } else {
-				content.style.maxHeight = content.scrollHeight + "px";
-			    } 
-			  });
+				// monitor button events and expand or collapse the element's sliblings
+				elements[i].addEventListener("click", function() {
+					this.classList.toggle("active");
+					var content = this.nextElementSibling;
+					// reduce the max height to collapse the element
+					if (content.style.maxHeight){
+						content.style.maxHeight = null;
+					// increse the max height to expand the element
+					} else {
+						content.style.maxHeight = content.scrollHeight + "px";
+					} 
+				});
 			}
 		},
+		/**
+		* Display the responsive info box to show the name of the state that user mouses hover onto
+		*/
 		displayMapHoverBox: function() {
 			var hoverBox = document.getElementById('map-hover-box');
 
+			// monitor the user mouse events
 			document.addEventListener('mouseover', function (e) {
+				// whenever user hovers onto the corresponding svg path
+				// display the corresponding state name
 				if (e.target.tagName == 'path') {
 					var content = e.target.dataset.name;
 					hoverBox.innerHTML = content;
 					hoverBox.style.opacity = "100%";
+				// otherwise do not display anything
 				} else {
 					hoverBox.style.opacity = "0%";
 				}
@@ -605,7 +636,5 @@ var APP = {
 				hoverBox.style.left = (x) + 'px';
 			};
 		}
-	},
-	beforeMount() {
 	}
 };

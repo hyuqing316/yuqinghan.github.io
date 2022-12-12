@@ -163,3 +163,22 @@ footer {
 	letter-spacing: 7px;
 	white-space: pre;
 }
+
+.menu {
+	box-shadow: -3px 0px 3px 0px #F0E68C;
+}
+.menu .nav li a:hover {
+	color: #F0E68C;
+	fill: #F0E68C;
+}
+
+.contrast {
+	background-color: #F0E68C;
+	width: 100%;
+}
+
+.yellow {
+	color: #F0E68C;
+	text-shadow: 3px 3px #555;
+	opacity: 0.8;
+}

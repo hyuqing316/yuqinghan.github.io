@@ -167,6 +167,12 @@ a:hover {
 	margin: 10px 20px 10px 0px;
 }
 
+.iframeContainer iframe {
+	width: 580px;
+	height: 320px;
+	border-width: 0px;
+}
+
 .inlineIntroContainer {
 	display: inline-block;
 	float: right;

@@ -87,13 +87,13 @@
     border-radius: 8px;
     font-size: 24px;
     position: fixed;
-    color: white;
+    color: black;
     font-family: "Poppins";
-    background-color: black;
+    background-color: #9966cb;
     width: fit-content;
     transform: translateX(-50%);
     transition: opacity .4s ease;
-    z-index: 1;
+    z-index: 3;
 }
 
 .menu {
