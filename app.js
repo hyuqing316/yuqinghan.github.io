@@ -303,7 +303,7 @@ var APP = {
 					intro1: 'Well known as one of the most popular ',
 					moba: 'MOBA games',
 					mobaHref: 'https://leagueoflegends.fandom.com/wiki/User_blog:Xeroshifter/Noob_to_Pro:_What_is_A_MOBA',
-					intro2: 'League of Legends has built a giant universe with over 13 regions and more than 140 champions. Each region can be observed with intriguing history from its origin to the latest development such as conflicts and revolution. Each champion comes with a well told story, which vividly depict his or her personalities and life journeys.'
+					intro2: 'League of Legends has built an incredible universe with over 13 regions and more than 140 champions. Each region can be observed with the intriguing history that will never cease. Each champion comes with a well told story, which vividly depicts his or her personalities and life journeys.'
 				},
 				regionsName: 'REGIONS',
 				regionsHref: 'https://universe.leagueoflegends.com/en_US/regions/',
@@ -365,7 +365,23 @@ var APP = {
 						name: 'ZAUN',
 						imgSrc: './imgs/zaun.gif'
 					},
-				]
+				],
+				arcane: {
+					name: 'ARCANE',
+					href: 'https://arcane.com/en-us/',
+					trailer: 'Netflix TV show trailer',
+					fightScenes: 'Fight scenes in Arcane',
+					trailerIframeSrc: 'https://www.youtube.com/embed/fXmAurh012s',
+					fightScenesIframeSrc: 'https://www.youtube.com/embed/vnYoxXYZN5g',
+					intro: [
+						'Different from many video games movies and TV shows suffering from the curse of failing to even reproduce the games, Arcane is an extraodinary production that is definitely worth binge watching.',
+						'Not only does it indredibly flesh out the iconic champions with vivid facial expression and movements, but also it illustrates an appealing story regarding the violent clash between two sisters and two regions.',
+					],
+					intro2: [
+						'The fight scenes are so epic in terms of the astounding 3D animation visual effect, excellent fighting movement design and the reality-tearing magic reproduced from the champions skills in the games',
+						'Exciting fight scenesa aside, you could easily feel the same emotional bonding as well as the boiling tension just as you are being inside of this incredible yet complicated new world.'
+					]
+				}
 			},
 			nextSection: {
 				name: 'Contact',
