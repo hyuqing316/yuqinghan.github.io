@@ -473,8 +473,7 @@ var APP = {
 			// make clock count time
 			setTimeout(this.showTime, 1000);
 		},
-		fetchChampionsJson: async function() {
-			const filePath = './utils/champions.json';
+		fetchJson: async function(filePath) {
 			const payload = {
 				headers: {
 					"Accept": "application/json",
@@ -508,7 +507,11 @@ var APP = {
 			
 			const responseBody = await response.json();
 			console.log("[INFO] Successfully fetched the json content!", responseBody);
-
+			return responseBody;
+		},
+		fetchChampionsJson: async function() {
+			const filePath = './utils/champions.json';
+			const responseBody = await this.fetchJson(filePath);
 			const data = responseBody.data;
 			const championsWithBrokenLinks = [
 				"Akshan", "Bel'Veth", "Gwen", "K'Sante", "Nilah", "Rell", "Renata Glasc", "Vex", "Viego", "Zeri"
@@ -535,39 +538,7 @@ var APP = {
 		},
 		fetchMapsJson: async function() {
 			var filePath = './utils/maps.json';
-			var payload = {
-				headers: {
-					"Accept": "application/json",
-					"Content-Type": "application/json",
-				},
-				method: "GET"
-			};
-			
-			// try making fetch call to get the json content
-			console.log(`[INFO] Fetching the json file at '${filePath}'...`);
-			let errorMessage = undefined;
-			let statusCode = 500; // default to internal server error
-			const response = await fetch(filePath, payload)
-			 .catch((error) => { // error is caught while fetching json content (e.g. network error, failed to fetch)
-			   errorMessage = String(error);
-			 });
-
-			// process errors 
-			// 1) network errors - not able to make fetch call
-			// 2) bad request errors - fetch call succeeds but not receive content 
-			if (!response || (!response.ok && !response.status != 200)) {
-			 // success fetch call but error exists (e.g. bad request)
-			 if (!errorMessage) {
-			   errorMessage = response?.statusText ?? "Unknown Error";
-			   statusCode = response?.status; 
-			 }
-			 // display error in the popped up window
-			 console.error(`[ERROR] [StatusCode = ${statusCode}] Unexpected error is caught while fetching the json content. `, errorMessage);
-			 return;
-			}
-			
-			const responseBody = await response.json();
-			console.log("[INFO] Successfully fetched the json content!", responseBody);
+			const responseBody = await this.fetchJson(filePath);
 
 			const data = responseBody.states;
 			const visitedStates = [
