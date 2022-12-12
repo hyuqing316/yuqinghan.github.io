@@ -30,6 +30,25 @@ footer {
 	height: 1500px;
 }
 
+.homePageSection {
+	height: 80%;;
+	width: 100%;
+	background: linear-gradient( rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55) ), url('../imgs/home_page.jpg');
+	background-size: cover;
+	z-index: -1;
+}
+
+.homePageTitle {
+	position: absolute;
+	top: 200PX;
+	z-index: 100;
+	display: block;
+	margin: auto;
+	font-family: inherit;
+	font-size: 60px;
+	color: white;
+}
+
 /* Fixed sdie navigation menu */
 .hide {
 	display: none;

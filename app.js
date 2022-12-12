@@ -72,6 +72,12 @@ var APP = {
 				]
 			}
 		],
+		home: {
+			nextSection: {
+				name: 'Portfolio',
+				href: './portfolio.html'
+			}
+		},
 		intro: {
 			imgSrc: './imgs/intro.jpg',
 			title: 'My Story ...',
@@ -512,6 +518,10 @@ var APP = {
 		fetchChampionsJson: async function() {
 			const filePath = './utils/champions.json';
 			const responseBody = await this.fetchJson(filePath);
+			if (!responseBody) {
+				return;
+			} 
+
 			const data = responseBody.data;
 			const championsWithBrokenLinks = [
 				"Akshan", "Bel'Veth", "Gwen", "K'Sante", "Nilah", "Rell", "Renata Glasc", "Vex", "Viego", "Zeri"
@@ -539,7 +549,10 @@ var APP = {
 		fetchMapsJson: async function() {
 			var filePath = './utils/maps.json';
 			const responseBody = await this.fetchJson(filePath);
-
+			if (!responseBody) {
+				return;
+			} 
+			
 			const data = responseBody.states;
 			const visitedStates = [
 				"CA", "NV", "MA", "WA", "HI", "ID", "WY", "UT", "NC", "MT", "NY"
