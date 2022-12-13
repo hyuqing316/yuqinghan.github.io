@@ -1,0 +1,184 @@
+input[type=text] {
+  width: 95%;
+  padding: 12px 20px;
+  margin: 8px;
+  display: inline-block;
+  border: none;
+  border-bottom: 2px solid #f5a9cb;
+  box-sizing: border-box;
+  font-size: 16px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  outline: none;
+  font-family: inherit;
+}
+
+
+input[type=text]:focus {
+	border: none;
+	border-bottom: 4px solid black;
+}
+
+textarea {
+	border: 2px solid #f5a9cb;	
+	font-size: 16px;
+	display: inline-block;
+	-webkit-transition: 0.3s;
+	transition: 0.3s;
+	outline: none;
+	font-family: inherit;
+	height: 50px;
+}
+
+textarea:focus {
+	border: 4px solid black;	
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #b3b3b3;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: #b3b3b3;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+  color: #b3b3b3;
+}
+
+.mediumPage {
+	height: 800px;
+}
+
+.pinkLabel {
+	color: #fe5bac;
+	font-weight: bold;
+}
+
+.menu {
+	box-shadow: -3px 0px 3px 0px #f5a9cb;
+}
+.menu .nav li a:hover {
+	color: #f5a9cb;
+	fill: #f5a9cb;
+}
+.contrast {
+	background-color: #f5a9cb;
+	width: 100%;
+}
+
+.contactModal {
+	width: 80%;
+	height: 70%;
+	display: block;
+	margin-bottom: 10px;
+}
+
+.contactForm {
+	width: 60%;
+	float: right;
+	height: 100%;
+}
+
+.contactFormHeader {
+	font-size: 40px;
+	color: #fe5bac;
+	font-weight: bold;
+	width: 100%;
+	margin: 20px;
+	margin-top: 30px;
+	padding: 20px 0px 0px 20px;
+}
+
+.contactFormRow {
+	width: 100%;
+	padding: 20px;
+	margin-left: 20px;
+}
+
+.spacing {
+	margin-bottom: 70px;
+}
+
+.contactFormLeftCol {
+	width: 50%;
+	float: left;
+}
+
+.contactFormRightCol {
+	width: 50%;
+	float: right;
+}
+
+.contactFormMsg {
+	width: 100%;
+	padding: 12px 20px;
+	margin-top: 8px;
+}
+
+.contactBanner {
+	width: 40%;
+	height: 100%;
+	float: left;
+	background-color: #f5a9cb;
+}
+
+.contactBannerText {
+	padding: 50px 20px;
+	display: block;
+	margin: auto;
+	text-align: center;
+}
+
+.contactBannerText svg {
+	fill: black;
+	stroke: black;
+	height: 30px;
+	width: 30px;
+	stroke-width: 2px;
+}
+
+.contactBannerBlock {
+	margin-bottom: 30px;
+}
+
+.otherSvg {
+	height: 20px;
+	width: auto;
+	margin-top: 10px;
+	margin-right: 20px;
+}
+
+
+.formSubmitBtn {
+  text-align: center;
+  display: block;
+  margin-left: 50%;
+  margin-top: 4px;
+  padding: 10px 20px 10px 20px;
+  background-color: white;
+  color: #fe5bac;
+  border: 2px solid #fe5bac;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+.formSubmitBtn:hover,
+.formSubmitBtn:focus {
+    text-align: center;
+    background-color: #f5a9cb;
+    cursor: pointer;
+    color: black;
+    border: 2px solid black;
+    transform: scale(1.25);
+}
+
+.contactBlockHeader {
+	text-align: center;
+	display: inline-block;
+	font-size: 22px;
+	font-weight: bold;
+}

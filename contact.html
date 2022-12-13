@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+	<meta charset="utf-8">
+	<title>&#9729;&#65039; | YUQING HAN</title>
+	
+	<link rel="stylesheet" href='https://fonts.googleapis.com/css?family=Orbitron'>
+	<link rel="stylesheet" href="./css/main.css">
+	<link rel="stylesheet" href="./css/contact.css">
+</head>
+
+<body>
+	<div class="scrollable" id="app">
+		<!-- svg components -->
+		<div class="hide">
+			<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+				<symbol v-for="svg in svgData" :view-box.camel="svg.viewBox" :id="svg.id">
+					<path v-for="path in svg.paths" :d="path"/>
+				</symbol>
+				<symbol v-for="svg in resume.svg" :view-box.camel="svg.viewBox" :id="svg.id">
+					<path v-for="path in svg.paths" :d="path"/>
+				</symbol>
+				<symbol v-for="svg in contact.svg" :view-box.camel="svg.viewBox" :id="svg.id">
+					<path v-for="path in svg.paths" :d="path"/>
+				</symbol>
+			</svg>
+			<div id="digitalClock" class="clock"></div>
+			<div class="mapHoverBox" id="map-hover-box"></div>
+		</div>
+
+		<div class="scrollable mediumPage" id="contact_page">
+			<!-- page menu -->
+			<div class="menu">
+				<ul class="nav">
+					<li v-for="svg in svgData">
+						<a :href="svg.href">
+							<svg>
+								<use xmlns:xlink="http://www.w3.org/1999/xlink" :xlink:href="svg.ref"></use>
+							</svg>{{svg.value}}
+						</a>
+					</li>
+				</ul>
+			</div>
+
+
+		<div class="contactModal">
+			<div class="contactBanner">
+				<div class="contactBannerText">
+					<h1>CONTACT ME</h1>
+					<div class="contactBannerBlock" v-for="svg in resume.svg">
+						<a class="contactBlockHeader">{{svg.id.toUpperCase()}}</a><br>
+						<svg>
+							<use xmlns:xlink="http://www.w3.org/1999/xlink" :xlink:href="svg.ref"></use>
+						</svg> {{svg.value}}<br>
+					</div>
+					<div class="contactBannerBlock">
+						<a class="contactBlockHeader">{{contact.otherContact}}</a><br>
+						<a v-for="svg in contact.svg" :href="svg.href"><svg class="otherSvg">
+							<use xmlns:xlink="http://www.w3.org/1999/xlink" :xlink:href="svg.ref"></use>
+						</svg></a>
+					</div>
+				</div>
+			</div>
+			<form class="contactForm" action="https://formspree.io/f/mjvzndpk" method="POST">
+				<div class="contactFormHeader">
+					{{contact.formHeader}}
+				</div>
+				<div class="contactFormRow spacing">
+					<div v-for="item in contact.items.slice(0, 2)" class="contactFormLeftCol">
+						<label :for=item.name><span class="pinkLabel">{{item.label}}</span><br></label>
+						<input :id =item.name type="text" :name=item.name :placeholder=item.placeholder :required=item.required />
+					</div>
+				</div>
+				<div class="contactFormRow spacing">
+					<div v-for="item in contact.items.slice(2, 4)" class="contactFormLeftCol">
+						<label :for=item.name><span class="pinkLabel">{{item.label}}</span><br></label>
+						<input :id =item.name type="text" :name=item.name :placeholder=item.placeholder />
+					</div>
+				</div>
+				<div class="contactFormRow">
+					<label :for=contact.items[4].name><span class="pinkLabel">{{contact.items[4].label}}</span><br></label>
+					<textarea class="contactFormMsg" :id="contact.items[4].name" :name="contact.items[4].name" 
+					          :placeholder=contact.items[4].placeholder :required=contact.items[4].required></textarea>
+				</div>
+				<button class="formSubmitBtn" type="submit"><b>{{contact.formBtn}}</b></button>
+			</form>
+		</div>
+
+			<!-- transition section -->
+		 	<div id="transition_section" class="contrast">
+		 		<div class="endSection">
+			 		<p class="endSection_title">
+		 				{{endSection.title}}
+		 			</p>
+		 			<p><a :href="contact.nextSection.href">{{contact.nextSection.name}}</a></p>
+		 		</div>
+		 	</div>
+		</div>
+
+	</div>
+	<footer>&#169; Yuing Han</footer>
+	 
+ 	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+	<script src="./app.js">
+		import APP from '.app.js';
+	</script>
+	<script>
+		new Vue(APP);
+	</script>
+</body>
+</html>

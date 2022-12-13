@@ -204,3 +204,10 @@
 	color: #17D4FE;
 	text-decoration: none;
 }
+.menu {
+	box-shadow: -3px 0px 3px 0px #6F8F17;
+}
+.menu .nav li a:hover {
+	color: #6F8F17;
+	fill: #6F8F17;
+}
