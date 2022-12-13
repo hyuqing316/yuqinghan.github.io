@@ -16,20 +16,20 @@ There are 6 pages supported in this website:
 
 - This is an intro / welcoming page. At the bottom of the page, users can choose to get routed to the Portfolio page.
  
-## [Portfolio page](https://hyuqing316.github.io/yuqinghan.github.io/index.html)
+## [Portfolio page](https://hyuqing316.github.io/yuqinghan.github.io/portfolio.html)
 
 - This is a page for introducing me. You could find my the information ranging from my schools to my pets then to my hobbies. At the bottom of the page, users can choose to get routed to the Portfolio page.
 
-## [Resumé page](https://hyuqing316.github.io/yuqinghan.github.io/index.html)
+## [Resumé page](https://hyuqing316.github.io/yuqinghan.github.io/resume.html)
 - This is a page for displaying my resumé. I basically converted my Latex built resumé into a web version, which contains a little bit animation and special formats for fun.
 
-## [Interest page](https://hyuqing316.github.io/yuqinghan.github.io/index.html)
+## [Interest page](https://hyuqing316.github.io/yuqinghan.github.io/interest.html)
 - This is a page for showcasing my biggest interest area, which is League of Legends (LOL). I have introduced several terms and concepts related to this game. In addition, I also mentioned the amazing TV drama [**Arcane**](https://arcane.com/en-us/) and included the trailers. This is probably the most interesting section in my personal website.
 
-## [Fun facts page](https://hyuqing316.github.io/yuqinghan.github.io/index.html)
+## [Fun facts page](https://hyuqing316.github.io/yuqinghan.github.io/fun.html)
 - This is page for demonstrating a little bit fun facts related to me. There is a responsive US map that you can play around as well.
 
-## [Contact me page](https://hyuqing316.github.io/yuqinghan.github.io/index.html)
+## [Contact me page](https://hyuqing316.github.io/yuqinghan.github.io/contact.html)
 - This is a page including my contact information. Simultaneously, users can utilize the form to contact me as well. The information filled out in the form will be sent to my school email address.
 
 ## Project usage
