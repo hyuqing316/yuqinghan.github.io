@@ -107,3 +107,113 @@
 .endSection_title {
     color: #eed9d9;
 }
+
+
+/* small screen */
+@media only screen and (max-width: 768px) {
+    .section {
+        width: 100%;
+        background-color: #a63d40;
+        margin-top:150px;
+        margin-bottom: 250px;
+        padding-top: 50px;
+    }
+
+    .header {
+        font-size: 30px;
+        float: left;
+        background-color: #fcfaf7;
+        margin: 50px 25px;
+    }
+
+    .larger {
+        font-size: 60px;
+    }
+
+    .mapContainer {
+        background-color: #a63d40;
+        margin: 100px 0px;
+        padding: 25px;
+        width: 100%;
+        color: #eed9d9;
+        clear: both;
+        font-size: 18px;
+    }
+
+    .mapContainerTitle {
+        padding-top: 50px;
+        padding-left: 10px;
+        font-size: 30px;
+    }
+
+    .mapHoverBox {
+        box-shadow: 0px 7px 40px rgba(0, 0, 0, 0.7);
+        opacity: 0%;
+        padding: 8px;
+        border-radius: 8px;
+        font-size: 16px;
+        position: fixed;
+        color: black;
+        font-family: "Poppins";
+        background-color: #9966cb;
+        width: fit-content;
+        transform: translateX(-50%);
+        transition: opacity .4s ease;
+        z-index: 3;
+    }
+}
+
+
+/* medium screen */
+@media only screen and (min-width: 768px) and (max-width: 1200px) {
+    .section {
+        width: 100%;
+        background-color: #a63d40;
+        margin-top:225px;
+        margin-bottom: 375px;
+        padding-top: 75px;
+    }
+
+    .header {
+        font-size: 52px;
+        float: left;
+        background-color: #fcfaf7;
+        margin: 75px 38px;
+    }
+
+    .larger {
+        font-size: 90px;
+    }
+
+    .mapContainer {
+        background-color: #a63d40;
+        margin: 150px 0px;
+        padding: 38px;
+        width: 100%;
+        color: #eed9d9;
+        clear: both;
+        font-size: 22px;
+    }
+
+    .mapContainerTitle {
+        padding-top: 75px;
+        padding-left: 12px;
+        font-size: 50px;
+    }
+
+    .mapHoverBox {
+        box-shadow: 0px 7px 40px rgba(0, 0, 0, 0.7);
+        opacity: 0%;
+        padding: 12px;
+        border-radius: 8px;
+        font-size: 20px;
+        position: fixed;
+        color: black;
+        font-family: "Poppins";
+        background-color: #9966cb;
+        width: fit-content;
+        transform: translateX(-50%);
+        transition: opacity .4s ease;
+        z-index: 3;
+    }
+}

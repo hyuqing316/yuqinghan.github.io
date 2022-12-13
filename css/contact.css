@@ -54,6 +54,7 @@ textarea:focus {
 .pinkLabel {
 	color: #fe5bac;
 	font-weight: bold;
+	font-size: 20px;
 }
 
 .menu {
@@ -131,6 +132,7 @@ textarea:focus {
 	text-align: center;
 }
 
+
 .contactBannerText svg {
 	fill: black;
 	stroke: black;
@@ -141,6 +143,7 @@ textarea:focus {
 
 .contactBannerBlock {
 	margin-bottom: 30px;
+	font-size: 20px;
 }
 
 .otherSvg {
@@ -181,4 +184,252 @@ textarea:focus {
 	display: inline-block;
 	font-size: 22px;
 	font-weight: bold;
+}
+
+
+
+/* small screen */
+@media only screen and (max-width: 768px) {
+	input[type=text] {
+	  width: 95%;
+	  padding: 8px 12px;
+	  margin: 4px;
+	  display: inline-block;
+	  border: none;
+	  border-bottom: 2px solid #f5a9cb;
+	  box-sizing: border-box;
+	  font-size: 12px;
+	  -webkit-transition: 0.3s;
+	  transition: 0.3s;
+	  outline: none;
+	  font-family: inherit;
+	}
+
+	input[type=text]:focus {
+		border: none;
+		border-bottom: 2px solid black;
+	}
+
+	textarea {
+		border: 1px solid #f5a9cb;	
+		font-size: 12px;
+		display: inline-block;
+		-webkit-transition: 0.3s;
+		transition: 0.3s;
+		outline: none;
+		font-family: inherit;
+		height: 25px;
+	}
+
+	.pinkLabel {
+		color: #fe5bac;
+		font-weight: bold;
+		font-size: 16px;
+	}
+
+	.contactBannerBlock {
+		margin-bottom: 30px;
+		font-size: 14px;
+	}
+
+	.contactFormHeader {
+		font-size: 22px;
+		color: #fe5bac;
+		font-weight: bold;
+		width: 100%;
+		margin: 10px;
+		margin-top: 15px;
+		padding: 15px 0px 0px 15px;
+	}
+
+	.contactFormRow {
+		width: 100%;
+		padding: 12px;
+		margin-left: 12px;
+	}
+
+	.spacing {
+		margin-bottom: 50px;
+	}
+
+	.contactFormMsg {
+		width: 100%;
+		padding: 8px 10px;
+		margin-top: 5px;
+	}
+
+	.contactBannerText h1 {
+		font-size: 22px;
+		font-weight: bold;
+	}
+
+	.contactBannerText {
+		padding: 25px 10px;
+		display: block;
+		margin: auto;
+		text-align: center;
+	}
+
+	.contactBannerText svg {
+		fill: black;
+		stroke: black;
+		height: 18px;
+		width: 18px;
+		stroke-width: 2px;
+	}
+
+	.otherSvg {
+		height: 18px;
+		width: auto;
+		margin-top: 10px;
+		margin-right: 18px;
+	}
+
+	.contactBlockHeader {
+		text-align: center;
+		display: inline-block;
+		font-size: 16px;
+		font-weight: bold;
+	}
+
+	.formSubmitBtn {
+	  text-align: center;
+	  display: block;
+	  margin-left: 50%;
+	  margin-top: 4px;
+	  padding: 7px 10px 7px 10px;
+	  background-color: white;
+	  color: #fe5bac;
+	  border: 2px solid #fe5bac;
+	  border-radius: 8px;
+	  font-size: 12px;
+	  font-weight: bold;
+	  -webkit-transition: 0.3s;
+	  transition: 0.3s;
+	}
+	.formSubmitBtn:hover,
+	.formSubmitBtn:focus {
+	    text-align: center;
+	    background-color: #f5a9cb;
+	    cursor: pointer;
+	    color: black;
+	    border: 2px solid black;
+	    transform: scale(1.25);
+	}
+}
+
+/* medium screen */
+@media only screen and (min-width: 768px) and (max-width: 1200px) {
+	input[type=text] {
+	  width: 95%;
+	  padding: 10px 18px;
+	  margin: 8px;
+	  display: inline-block;
+	  border: none;
+	  border-bottom: 2px solid #f5a9cb;
+	  box-sizing: border-box;
+	  font-size: 14px;
+	  -webkit-transition: 0.3s;
+	  transition: 0.3s;
+	  outline: none;
+	  font-family: inherit;
+	}
+
+
+	input[type=text]:focus {
+		border: none;
+		border-bottom: 3px solid black;
+	}
+
+	textarea {
+		border: 2px solid #f5a9cb;	
+		font-size: 16px;
+		display: inline-block;
+		-webkit-transition: 0.3s;
+		transition: 0.3s;
+		outline: none;
+		font-family: inherit;
+		height: 40px;
+	}
+
+	.contactBannerBlock {
+		margin-bottom: 30px;
+		font-size: 18px;
+	}
+
+	.contactFormHeader {
+		font-size: 32px;
+		color: #fe5bac;
+		font-weight: bold;
+		width: 100%;
+		margin: 20px;
+		margin-top: 30px;
+		padding: 20px 0px 0px 20px;
+	}
+
+	.contactFormRow {
+		width: 100%;
+		padding: 18px;
+		margin-left: 18px;
+	}
+
+	.spacing {
+		margin-bottom: 60px;
+	}
+
+	.contactFormMsg {
+		width: 100%;
+		padding: 10px 18px;
+		margin-top: 7px;
+	}
+
+	.contactBannerText h1 {
+		font-size: 24px;
+		font-weight: bold;
+	}
+
+	.contactBannerText {
+		padding: 35px 15px;
+		display: block;
+		margin: auto;
+		text-align: center;
+	}
+
+	.pinkLabel {
+		color: #fe5bac;
+		font-weight: bold;
+		font-size: 18px;
+	}
+
+	.formSubmitBtn {
+	  text-align: center;
+	  display: block;
+	  margin-left: 50%;
+	  margin-top: 4px;
+	  padding: 10px 20px 10px 20px;
+	  background-color: white;
+	  color: #fe5bac;
+	  border: 2px solid #fe5bac;
+	  border-radius: 8px;
+	  font-size: 14px;
+	  font-weight: bold;
+	  -webkit-transition: 0.3s;
+	  transition: 0.3s;
+	}
+	.formSubmitBtn:hover,
+	.formSubmitBtn:focus {
+	    text-align: center;
+	    background-color: #f5a9cb;
+	    cursor: pointer;
+	    color: black;
+	    border: 2px solid black;
+	    transform: scale(1.25);
+	}
+
+	.contactBlockHeader {
+		text-align: center;
+		display: inline-block;
+		font-size: 20px;
+		font-weight: bold;
+	}
 }

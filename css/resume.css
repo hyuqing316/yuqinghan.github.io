@@ -122,3 +122,197 @@ hr {
 .contrast {
 	background-color: #17D4FE;
 }
+
+
+/* small screen */
+@media only screen and (max-width: 768px) {
+	.resumeHeader {
+		background-image: url('../imgs/header.gif');
+		background-size: auto;
+		padding: 40px 15px;
+	}
+
+	.resumeHeader p {
+		background-color: #17D4FE;
+		color: black;
+		text-shadow: 1px 1px white;
+		font-size: 40px;
+		width: 50%;
+		padding: 15px;
+	}
+
+	.resumeBody {
+		border: 1px solid black;
+		padding: 20px 10px;
+	}
+
+	.resumeName {
+		text-align: center;
+		font-size: 25px;
+	}
+
+	.resumeInfo {
+		text-align: center;
+		font-size: 14px;
+		font-weight: normal;
+	}
+
+	.resumeInfo svg {
+		fill: black;
+		stroke: black;
+		height: 14px;
+		width: 14px;
+	}
+
+	.resumeSection {
+		padding-top: 15px;
+		padding-left: 7px;
+		padding-right: 7px;
+		clear: both;
+	}
+
+	.resumeSectionTitle {
+		font-size: 20px;
+		color: #17D4FE;
+	}
+
+	.resumeItemHeader {
+		font-size: 16px;
+		font-weight: bold;
+		clear: both;
+	}
+
+	.resumeItem {
+		display: block;
+		float: left;
+		text-align: left;
+		padding-top: 5px;
+		font-weight: lighter;
+		clear: both;
+		margin-bottom: 10px;
+		font-size: 14px;
+	}
+
+	.resumeSection ul {
+		padding-left: 10px;
+	}
+
+	.resumeSection li {
+		text-align: left;
+		line-height: 1.5;
+		font-weight: lighter;
+		clear: both;
+		list-style-type: circle;
+		padding-top: 7px;
+		padding-bottom: 7px;
+		width: 100%;
+		font-size: 14px;
+	}
+
+	.skillItem {
+		padding-bottom: 2.5px;
+		font-size: 14px;
+	}
+
+	.strong {
+		font-weight: bold;
+		font-size: 16px;
+	}
+}
+
+
+/* medum screen */
+@media only screen and (min-width: 768px) and (max-width: 1200px) {
+	.resumeHeader {
+		background-image: url('../imgs/header.gif');
+		background-size: auto;
+		padding: 65px 22px;
+	}
+
+	.resumeHeader p {
+		background-color: #17D4FE;
+		color: black;
+		text-shadow: 1px 1px white;
+		font-size: 65px;
+		width: 50%;
+		padding: 22px;
+	}
+
+	.resumeBody {
+		border: 1px solid black;
+		padding: 30px 15px;
+	}
+
+	.resumeName {
+		text-align: center;
+		font-size: 38px;
+	}
+
+	.resumeInfo {
+		text-align: center;
+		font-size: 16px;
+		font-weight: normal;
+	}
+
+	.resumeInfo svg {
+		fill: black;
+		stroke: black;
+		height: 18px;
+		width: 18px;
+	}
+
+	.resumeSection {
+		padding-top: 25px;
+		padding-left: 8px;
+		padding-right: 8px;
+		clear: both;
+	}
+
+	.resumeSectionTitle {
+		font-size: 25px;
+		color: #17D4FE;
+	}
+
+	.resumeItemHeader {
+		font-size: 20px;
+		font-weight: bold;
+		clear: both;
+	}
+
+	.resumeItem {
+		display: block;
+		float: left;
+		text-align: left;
+		padding-top: 5px;
+		font-weight: lighter;
+		clear: both;
+		margin-bottom: 10px;
+		font-size: 16px;
+	}
+
+	.resumeSection ul {
+		padding-left: 16px;
+	}
+
+	.resumeSection li {
+		text-align: left;
+		line-height: 1.5;
+		font-weight: lighter;
+		clear: both;
+		list-style-type: circle;
+		padding-top: 8px;
+		padding-bottom: 8px;
+		width: 100%;
+		font-size: 16px;
+	}
+
+	.skillItem {
+		padding-bottom: 4px;
+		font-size: 16px;
+	}
+
+	.strong {
+		font-weight: bold;
+		font-size: 18px;
+	}
+}

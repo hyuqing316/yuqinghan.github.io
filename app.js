@@ -429,6 +429,7 @@ var APP = {
 		},
 		// contact page data attributes
 		contact: {
+			bannerHeader: 'CONTACT ME',
 			items: [
 				{
 					label: 'Name*',
