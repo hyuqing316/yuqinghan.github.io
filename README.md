@@ -1,6 +1,6 @@
 # Yuqing Han Personal Website
 
-This is a repository for the final project of CS601. You could review the final result at [Yuqing Han's personal website](https://hyuqing316.github.io/yuqinghan.github.io/).
+This is a repository for the final project of CS601. You could review the final result [here](https://hyuqing316.github.io/yuqinghan.github.io/).
 
 ## Website structure
 
